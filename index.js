@@ -1,10 +1,17 @@
 const fs =require('fs');
 const inquirer = require('inquirer');
 const path = require('path');
-const {generateSVG, makeShape} = require('./lib/shapes');
+const {Square,Circle,Triangle}=require("./lib/shapes")
+const SVG =require("./lib/svg")
 
+function createMyShape(fileName, decision){
+    fs.writeFileSync(fileName,decision,(err)=>{
+        err? console.log(err):console.log("Your logo has been generated")
+    })
+}
 
-inquirer
+function makeAShape(){
+    inquirer
     .prompt([
         {
             type:"input",
@@ -19,7 +26,7 @@ inquirer
 
         },
         {
-            type:"input",
+            type:"list",
             name:"logoShape",
             message: "Please choose a logo shape (press enter to select).",
             choices: ['triange','circle', 'square'],
@@ -33,3 +40,32 @@ inquirer
         }, 
 
     ])
+    .then((decision)=>{
+        let myShapesLogo
+        switch (decision.logoShape) {
+            case "triangle":
+                myShapesLogo=new Triangle()
+                
+                break;
+                case "circle":
+                    myShapesLogo=new Circle()
+                    break;
+                    case "square":
+                    myShapesLogo= new Square()
+
+        
+            
+                break;
+        }
+        myShapesLogo.setcolor(decision.textColor)
+        const myNewLogo = new SVG()
+        myNewLogo.setShape (myShapesLogo)
+        myNewLogo.setText (decision.text, decision.textColor)
+        if (decision.text.length>3){
+            console.log("Too many characters")
+            makeAShape()
+        }
+        createMyShape("logo.svg", myNewLogo.render())
+    })
+}
+makeAShape()
