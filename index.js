@@ -2,7 +2,7 @@ const fs =require('fs');
 const inquirer = require('inquirer');
 const path = require('path');
 const {generateSVG, makeShape} = require('./lib/shapes');
-const { default: Choices } = require('inquirer/lib/objects/choices');
+
 
 inquirer
     .prompt([
