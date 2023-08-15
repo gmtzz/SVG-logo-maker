@@ -24,9 +24,10 @@
 
 5. After, you will be prompted with the questions to generate your new SVG logo
 ## DEMO-Recording
-
+* https://drive.google.com/file/d/18G5UImZj_Sq8-RbTGwvg0ySrRmwo915a/view 
 ## Screenshots
-
+![Screenshot 2023-08-15 163000](https://github.com/gmtzz/SVG-logo-maker/assets/94001517/20f97dfb-0808-48f9-9567-1f310dd1b4ec)
+![Screenshot 2023-08-15 162854](https://github.com/gmtzz/SVG-logo-maker/assets/94001517/39fca274-d0b9-469a-bb9b-2d07614c8491)
 ## Technologies-Used
 * Node.js
 * Inquirer
